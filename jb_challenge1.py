@@ -19,18 +19,18 @@ def get_sentences(story):
 def get_paragraphs(story):
     paragraphs = story.split("\n\n")
     number_of_paragraphs = len(paragraphs)
+    return number_of_paragraphs
 
-print "Unique words and their counts: \n"
-
-#def get_unique_count():
-wordcount = {}
-for word in file.read().split():
-    if word not in wordcount:
-        wordcount[word] = 1
-    else:
-        wordcount[word] += 1
-for k, v in wordcount.items():
-    print k, v
+def get_unique_count(story):
+    words = []
+    wordcount = 0
+    for word in story.split():
+        if word not in words:
+            wordcount += 1
+            words.append(word)
+        else:
+            pass 
+    return wordcount
 
 print "Total Unique Words: {}".format(get_unique_count(file_contents))
 print "Total Word Count: {}".format(get_words(file_contents))
