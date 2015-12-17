@@ -1,29 +1,24 @@
 #!/usr/bin/python
 
-file = open("story.txt", "r+")
+file = open("story.txt", "r")
+file_contents = file.read()
 
-#words = 0
-#unique = 0
-#paragraphs = 0
-#sentences = 0
+#Count number of words using split()
+def get_words(story):
+    words = len(story.split())
+    return words
 
+#Count number of sentences by counting terminal punctuation(?,!,.)
+def get_sentences(story):
+    x = story.count('.')
+    y = story.count('?')
+    z = story.count('!')
+    sentences = x + y + z
+    return sentences
 
-#def get_words():
-#for word in file.read().split():
-words = file.read().split()
-number_of_words = len(words)
-print "Words: {words}".format(words=number_of_words)
-
-#def get_sentences():
-sentences = file.read().split('. ')
-number_of_sentences = len(sentences)
-print "Sentences: {sentences}".format(sentences=number_of_sentences)
-
-
-#def get_paragraphs():
-paragraphs = file.read().split("\n\n")
-number_of_paragraphs = len(paragraphs)
-print "Paragraphs: {paragraphs}".format(paragraphs=number_of_paragraphs)
+def get_paragraphs(story):
+    paragraphs = story.split("\n\n")
+    number_of_paragraphs = len(paragraphs)
 
 print "Unique words and their counts: \n"
 
@@ -36,3 +31,8 @@ for word in file.read().split():
         wordcount[word] += 1
 for k, v in wordcount.items():
     print k, v
+
+print "Total Unique Words: {}".format(get_unique_count(file_contents))
+print "Total Word Count: {}".format(get_words(file_contents))
+print "Paragraphs: {}".format(get_paragraphs(file_contents))
+print "Sentences: {}".format(get_sentences(file_contents))
