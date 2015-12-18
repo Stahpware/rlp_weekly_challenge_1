@@ -3,25 +3,31 @@
 file = open("story.txt", "r")
 file_contents = file.read()
 
-#Count number of words using split()
+
 def get_words(story):
+    '''Count number of words using split()'''
     words = len(story.split())
     return words
 
-#Count number of sentences by counting terminal punctuation(?,!,.)
+
 def get_sentences(story):
+    '''Count number of sentences by counting terminal punctuation(?,!,.)'''
     x = story.count('.')
     y = story.count('?')
     z = story.count('!')
     sentences = x + y + z
     return sentences
 
+
 def get_paragraphs(story):
+    '''Count number of paragraphs by splitting on 2 newlines.'''
     paragraphs = story.split("\n\n")
     number_of_paragraphs = len(paragraphs)
     return number_of_paragraphs
 
+
 def get_unique_count(story):
+    '''Grab Unique words and count how many times they are used.'''
     words = []
     wordcount = 0
     for word in story.split():
@@ -29,7 +35,7 @@ def get_unique_count(story):
             wordcount += 1
             words.append(word)
         else:
-            pass 
+            pass
     return wordcount
 
 print "Total Unique Words: {}".format(get_unique_count(file_contents))
